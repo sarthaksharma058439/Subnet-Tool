@@ -11,13 +11,17 @@ import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools";
 import {settings} from "../components/settingfile"
+
 export default function MainScreen (){
   const [filedata,setfiledata] = useState({})
   const [Data,setData] = useState([])
   const [filename,setfilename] = useState("")
+
+  //this will call when user will click on file from treeview
 	function checkselect(e){
 		renderFile(e.name)
 	}
+  //here we are calling api from settings file and set the data to show initially
   useEffect(()=>{
     fetch(settings["folderstructure"]["url"]).then(e=>{
       e.text().then(v=>{
@@ -26,6 +30,8 @@ export default function MainScreen (){
       })
     })
   },[])
+
+  //this function is to create tree and nodes and function is added to render selected file
 	function createTree(node){
 		if(node.type == "file"){
 			return <TreeItem nodeId={String(Math.random()*100)} key = {String(Math.random()*100)} label={node.name} onClick = {()=>checkselect(node)} />
@@ -38,6 +44,8 @@ export default function MainScreen (){
 							}
 						</TreeItem>
 	}
+  //this function is to create ui, based on type we are rendering ui elements
+  //if type == label only file name will popup similarly for other elements we are checking types
   function createUI(data){
     if(data["type"]=="label"){
       return <>Filename : {filename}</>
@@ -50,6 +58,7 @@ export default function MainScreen (){
       return createUI(element)
     });
   }
+  //file render function in ace editor
   function renderFile(filepath){
 		fetch(settings["filedata"]["url"]+filepath).then(res=>{
 			res.text().then(val=>{
@@ -66,6 +75,7 @@ export default function MainScreen (){
               <Header />
           </div>
           <div className='flex flex-row h-full'>
+
               <div className='flex w-1/5 bg-white-100 h-full'>
                 <TreeView
                 aria-label="file system navigator"
@@ -85,6 +95,7 @@ export default function MainScreen (){
                 <div className='flex flex-col justify-around h-full'>
                   
                     {
+                      //inside middle div we are loading ui components with the help of template filedata
                       filedata["root"].map((element,idx) => {
                         return createUI(element)
                       })

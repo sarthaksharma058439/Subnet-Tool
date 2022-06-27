@@ -1,3 +1,4 @@
+//elements which we are rendering by checking in createUI() function
 const Elements = {
     "label": <label></label>,
     "textarea":<input></input>,
