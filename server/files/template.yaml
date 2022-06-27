@@ -1,0 +1,25 @@
+#optional: default value is false
+root:
+  - name: title
+    type: label
+  - name: aggregates
+    type: textarea
+  - name: device_name
+    type: textbox
+  - name: uplink_devices
+    type: textarea
+  - name: sysloc
+    type: textbox
+  - name: vlans
+    type: dict
+    multiple: true
+    valid_keys_in_items:
+      - name: size
+        type: textbox
+        validate: int
+      - name: id
+        type: textbox
+        validate: int
+  - name: submit
+    type: button
+        
