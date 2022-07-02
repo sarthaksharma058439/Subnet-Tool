@@ -40,6 +40,11 @@
 							"type":"file"
 						},
 						{
+							"name":"dynamicUI.yaml",
+							"children":null,
+							"type":"file"
+						},
+						{
 							"name":"vulcan_rack.yaml",
 							"children":null,
 							"type":"file"

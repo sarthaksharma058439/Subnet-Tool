@@ -1,21 +1,16 @@
 #optional: default value is false
 root:
-  - name: aggregates
+  - name: aggregates2
     type: textarea
   - name: device_name
     type: textbox
-  - name: uplink_devices
-    type: textarea
-  - name: sysloc
+  - name: sysloc2
     type: textbox
   - name: vlans
     type: dict
     multiple: true
     valid_keys_in_items:
-      - name: size
-        type: textbox
-        validate: int
-      - name: id
+      - name: size2
         type: textbox
         validate: int
         
