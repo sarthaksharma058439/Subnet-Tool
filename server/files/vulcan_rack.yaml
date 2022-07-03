@@ -9,11 +9,11 @@
         type: textbox
    - name: device_name_a
      type: textbox
-   - name: device_name_b
+   - name: device_name_a
      type: textbox
    - name: uplink_devices
      type: textarea
-   - name: sysloc2
+   - name: sysloc
      type: textbox
    - name: vlans
      type: dict
